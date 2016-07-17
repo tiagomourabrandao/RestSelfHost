@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{33592F89-E1DC-4AA2-A14C-A34B811DC9CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSelfHostTest", "RestSelfHostTest\RestSelfHostTest.csproj", "{C36E3E1A-D249-4C33-8B90-2F58BE4A8F96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{33592F89-E1DC-4AA2-A14C-A34B811DC9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33592F89-E1DC-4AA2-A14C-A34B811DC9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33592F89-E1DC-4AA2-A14C-A34B811DC9CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C36E3E1A-D249-4C33-8B90-2F58BE4A8F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C36E3E1A-D249-4C33-8B90-2F58BE4A8F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C36E3E1A-D249-4C33-8B90-2F58BE4A8F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C36E3E1A-D249-4C33-8B90-2F58BE4A8F96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

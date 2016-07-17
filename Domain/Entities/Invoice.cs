@@ -8,6 +8,8 @@ namespace Domain.Entities
 {
     public class Invoice
     {
+
+        public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public int ReferenceMonth { get; set; }
         public int ReferenceYear { get; set; }
