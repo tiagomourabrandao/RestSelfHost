@@ -13,8 +13,8 @@ namespace Domain.Interfaces
 
         int Insert(Invoice invoice);
 
-        Invoice Get(int id);
+        Invoice Get(DateTime CreatedAt);
 
-        int Deactivate(int id);
+        int Deactivate(DateTime CreatedAt, DateTime DeactiveAt);
     }
 }

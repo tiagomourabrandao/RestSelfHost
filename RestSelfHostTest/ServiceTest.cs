@@ -4,6 +4,7 @@ using Moq;
 using Domain.Entities;
 using System.Collections.Generic;
 using Domain.Services;
+using System;
 
 namespace RestSelfHostTest
 {
@@ -57,10 +58,10 @@ namespace RestSelfHostTest
             var expected = new Invoice { Id = 1 };
 
             var invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            invoiceRepositoryMock.Setup(x => x.Get(1)).Returns(() => expected);
+            invoiceRepositoryMock.Setup(x => x.Get(It.IsAny<DateTime>())).Returns(() => expected);
 
             var invoiceService = new InvoiceService(invoiceRepositoryMock.Object);
-            var actual = invoiceService.Get(1);
+            var actual = invoiceService.Get(new DateTime(2016, 4, 15));
 
             Assert.AreEqual(expected, actual);
         }
@@ -72,11 +73,11 @@ namespace RestSelfHostTest
             var expected = true;
 
             var invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            invoiceRepositoryMock.Setup(x => x.Deactivate(It.IsAny<int>())).Returns(() => maxAffectedRows);
+            invoiceRepositoryMock.Setup(x => x.Deactivate(It.IsAny<DateTime>(), It.IsAny<DateTime>())).Returns(() => maxAffectedRows);
 
             var invoiceService = new InvoiceService(invoiceRepositoryMock.Object);
 
-            var actual = invoiceService.Deactivate(1);
+            var actual = invoiceService.Deactivate(new DateTime(2016, 3, 31), new DateTime(2016, 4, 11));
 
             Assert.AreEqual(expected, actual);
 
