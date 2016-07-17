@@ -35,5 +35,13 @@ namespace Domain.Services
         {
             return _invoiceRepository.Get(id);
         }
+
+        public bool Deactivate(int id)
+        {
+            const int maxAffectedRows = 1;
+            var result = _invoiceRepository.Deactivate(id);
+
+            return result == maxAffectedRows;
+        }
     }
 }

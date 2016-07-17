@@ -67,15 +67,18 @@ namespace RestSelfHostTest
 
         [TestMethod]
         public void MustDeactivateInvoice() {
+
+            const int maxAffectedRows = 1;
             var expected = true;
 
             var invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            invoiceRepositoryMock.Setup(x => x.Deactivate(It.IsAny<int>())).Returns(() => true);
+            invoiceRepositoryMock.Setup(x => x.Deactivate(It.IsAny<int>())).Returns(() => maxAffectedRows);
 
             var invoiceService = new InvoiceService(invoiceRepositoryMock.Object);
 
-            invoiceService.Deactivate()
+            var actual = invoiceService.Deactivate(1);
 
+            Assert.AreEqual(expected, actual);
 
         }
 

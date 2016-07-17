@@ -11,7 +11,7 @@ namespace Repository
 {
     public class InvoiceRepository : IInvoiceRepository
     {
-        public bool Deactivate(int id)
+        public int Deactivate(int id)
         {
             throw new NotImplementedException();
         }

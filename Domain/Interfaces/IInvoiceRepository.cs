@@ -15,6 +15,6 @@ namespace Domain.Interfaces
 
         Invoice Get(int id);
 
-        bool Deactivate(int id);
+        int Deactivate(int id);
     }
 }
