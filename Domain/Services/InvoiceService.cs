@@ -31,15 +31,15 @@ namespace Domain.Services
             return result == maxAffectedRows;
         }
 
-        public Invoice Get(DateTime date)
+        public Invoice Get(int id)
         {
-            return _invoiceRepository.Get(date);
+            return _invoiceRepository.Get(id);
         }
 
-        public bool Deactivate(DateTime createdAt, DateTime deactiveAt)
+        public bool Deactivate(DateTime createdAt)
         {
             const int maxAffectedRows = 1;
-            var result = _invoiceRepository.Deactivate(createdAt, deactiveAt);
+            var result = _invoiceRepository.Deactivate(createdAt);
 
             return result == maxAffectedRows;
         }

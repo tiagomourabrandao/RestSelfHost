@@ -18,23 +18,23 @@ namespace Repository
             _connectionString = connectionString;
         }
 
-        public int Deactivate(DateTime CreatedAt, DateTime DeactiveAt)
+        public int Deactivate(DateTime createdAt)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
 
-                var result = connection.Execute("UPDATE Invoice SET DeactiveAt = @DeactiveAt WHERE id = @CreatedAt", new { DeactiveAt, CreatedAt });
+                var result = connection.Execute("UPDATE Invoice SET DeactiveAt = GETDATE () WHERE id = @CreatedAt", new { createdAt });
                 connection.Close();
 
                 return result;
             };
         }
 
-        public Invoice Get(DateTime CreatedAt)
+        public Invoice Get(int id)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
 
-                var invoice = connection.Query<Invoice>("SELECT * FROM Invoice WHERE CreatedAt = @CreatedAt", new { CreatedAt }).FirstOrDefault();
+                var invoice = connection.Query<Invoice>("SELECT * FROM Invoice WHERE Id = @id", new { id }).FirstOrDefault();
 
                 return invoice;
             };

@@ -8,6 +8,7 @@ using SimpleInjector.Integration.WebApi;
 using Domain.Interfaces;
 using Repository;
 using SimpleInjector.Extensions.ExecutionContextScoping;
+using System.Configuration;
 
 [assembly: OwinStartup(typeof(RestSelfHost.Startup))]
 
@@ -17,6 +18,8 @@ namespace RestSelfHost
     {
         public void Configuration(IAppBuilder app)
         {
+
+            var connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
             HttpConfiguration config = new HttpConfiguration();
 
@@ -30,7 +33,7 @@ namespace RestSelfHost
             var container = new Container();
 
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
-            container.Register<IInvoiceRepository, InvoiceRepository>(Lifestyle.Scoped);
+            container.RegisterSingleton<IInvoiceRepository>(new InvoiceRepository(connectionString));
             container.Verify();
 
             config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);

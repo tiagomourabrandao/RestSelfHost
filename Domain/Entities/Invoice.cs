@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Domain.Entities
 
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
+        [Range(1, 12)]
         public int ReferenceMonth { get; set; }
         public int ReferenceYear { get; set; }
         public string Document { get; set; }
