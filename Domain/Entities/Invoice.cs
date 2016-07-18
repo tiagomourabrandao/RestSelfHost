@@ -19,7 +19,7 @@ namespace Domain.Entities
         public string Description { get; set; }
         public decimal Amount { get; set; }
         public bool IsActive { get; set; }
-        public DateTime DeactiveAt { get; set; }
+        public DateTime? DeactiveAt { get; set; }
 
     }
 }

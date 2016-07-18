@@ -22,6 +22,7 @@ namespace RestSelfHost.Controller.V1
             _invoiceService = new InvoiceService(invoiceRepository);
         }
 
+        [Queryable]
         public IHttpActionResult Get()
         {
             var invoices = _invoiceService.GetAll();

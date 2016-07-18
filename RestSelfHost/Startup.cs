@@ -30,6 +30,8 @@ namespace RestSelfHost
                 defaults: new { id = RouteParameter.Optional }
                 );
 
+            config.EnableQuerySupport();
+
             var container = new Container();
 
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
