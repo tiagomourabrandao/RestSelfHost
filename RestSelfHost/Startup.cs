@@ -26,7 +26,7 @@ namespace RestSelfHost
             config.EnableCors();
             config.Routes.MapHttpRoute(
                 name: "RestSelfHost",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{version}/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 );
 
