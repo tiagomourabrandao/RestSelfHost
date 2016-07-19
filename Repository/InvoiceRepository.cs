@@ -1,9 +1,8 @@
-﻿using Domain.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using Dapper;
 using Domain.Entities;
+using Domain.Interfaces;
+using System.Collections.Generic;
 using System.Data.SqlClient;
-using Dapper;
 using System.Linq;
 
 namespace Repository
@@ -18,12 +17,12 @@ namespace Repository
             _connectionString = connectionString;
         }
 
-        public int Deactivate(DateTime createdAt)
+        public int Deactivate(int id)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
 
-                var result = connection.Execute("UPDATE Invoice SET DeactiveAt = GETDATE () WHERE id = @CreatedAt", new { createdAt });
+                var result = connection.Execute("UPDATE Invoice SET DeactiveAt = GETDATE () WHERE id = @id", new { id });
                 connection.Close();
 
                 return result;
@@ -32,7 +31,8 @@ namespace Repository
 
         public Invoice Get(int id)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString)) {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
 
                 var invoice = connection.Query<Invoice>("SELECT * FROM Invoice WHERE Id = @id", new { id }).FirstOrDefault();
 

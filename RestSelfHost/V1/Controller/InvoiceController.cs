@@ -2,7 +2,6 @@
 using Domain.Interfaces;
 using Domain.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,8 +13,6 @@ namespace RestSelfHost.Controller.V1
     {
 
         private readonly InvoiceService _invoiceService;
-
-
 
         public InvoiceController(IInvoiceRepository invoiceRepository)
         {
@@ -63,9 +60,9 @@ namespace RestSelfHost.Controller.V1
                 return BadRequest("Invalid Data!");
         }
 
-        public IHttpActionResult Delete(DateTime dateActivate)
+        public IHttpActionResult Delete(int id)
         {
-            var isDeactivated = _invoiceService.Deactivate(dateActivate);
+            var isDeactivated = _invoiceService.Deactivate(id);
             if (isDeactivated)
                 return Ok("Invoice Deactivated!");
             else

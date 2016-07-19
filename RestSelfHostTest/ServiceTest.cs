@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Domain.Entities;
 using Domain.Interfaces;
-using Moq;
-using Domain.Entities;
-using System.Collections.Generic;
 using Domain.Services;
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System.Collections.Generic;
 
 namespace RestSelfHostTest
 {
@@ -36,7 +35,8 @@ namespace RestSelfHostTest
         }
 
         [TestMethod]
-        public void MustInsertInvoice() {
+        public void MustInsertInvoice()
+        {
 
             const int maxAffectedRows = 1;
             var expected = true;
@@ -54,7 +54,8 @@ namespace RestSelfHostTest
         }
 
         [TestMethod]
-        public void MustReturnInvoice() {
+        public void MustReturnInvoice()
+        {
             var expected = new Invoice { Id = 1 };
 
             var invoiceRepositoryMock = new Mock<IInvoiceRepository>();
@@ -67,17 +68,18 @@ namespace RestSelfHostTest
         }
 
         [TestMethod]
-        public void MustDeactivateInvoice() {
+        public void MustDeactivateInvoice()
+        {
 
             const int maxAffectedRows = 1;
             var expected = true;
 
             var invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            invoiceRepositoryMock.Setup(x => x.Deactivate(It.IsAny<DateTime>())).Returns(() => maxAffectedRows);
+            invoiceRepositoryMock.Setup(x => x.Deactivate(It.IsAny<int>())).Returns(() => maxAffectedRows);
 
             var invoiceService = new InvoiceService(invoiceRepositoryMock.Object);
 
-            var actual = invoiceService.Deactivate(new DateTime(2016, 3, 31));
+            var actual = invoiceService.Deactivate(1);
 
             Assert.AreEqual(expected, actual);
 

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Domain.Interfaces;
 using Microsoft.Owin;
 using Owin;
-using System.Web.Http;
-using SimpleInjector;
-using SimpleInjector.Integration.WebApi;
-using Domain.Interfaces;
 using Repository;
+using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
+using SimpleInjector.Integration.WebApi;
 using System.Configuration;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(RestSelfHost.Startup))]
 
@@ -31,6 +29,8 @@ namespace RestSelfHost
                 );
 
             config.EnableQuerySupport();
+
+            config.MessageHandlers.Add(new KeyValidatorHandler());
 
             var container = new Container();
 

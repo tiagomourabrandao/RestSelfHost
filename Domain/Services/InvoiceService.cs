@@ -1,10 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Services
 {
@@ -36,10 +32,10 @@ namespace Domain.Services
             return _invoiceRepository.Get(id);
         }
 
-        public bool Deactivate(DateTime createdAt)
+        public bool Deactivate(int id)
         {
             const int maxAffectedRows = 1;
-            var result = _invoiceRepository.Deactivate(createdAt);
+            var result = _invoiceRepository.Deactivate(id);
 
             return result == maxAffectedRows;
         }
