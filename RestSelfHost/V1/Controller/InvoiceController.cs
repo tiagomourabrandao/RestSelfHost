@@ -54,7 +54,7 @@ namespace RestSelfHost.Controller.V1
                 if (_invoiceService.Insert(invoice))
                     return Ok("Invoice Created!");
                 else
-                    return InternalServerError(new Exception("We had a problem to insert your invoice. Please, try again later"));
+                    return InternalServerError(new Exception("We had a problem to insert your invoice.  Check your parameters and try again"));
             }
             else
                 return BadRequest("Invalid Data!");
@@ -66,7 +66,7 @@ namespace RestSelfHost.Controller.V1
             if (isDeactivated)
                 return Ok("Invoice Deactivated!");
             else
-                return InternalServerError(new Exception("We had a problem to deactive your invoice. Please, try again later"));
+                return InternalServerError(new Exception("We had a problem to deactive your invoice. Check your parameter and try again"));
         }
 
     }

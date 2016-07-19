@@ -18,7 +18,7 @@ namespace RestSelfHost
             if (request.Headers.Authorization != null && request.Headers.Authorization.Scheme == _applicationToken)
                 response = await base.SendAsync(request, cancellationToken);
             else
-                response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+                response = request.CreateResponse(HttpStatusCode.Unauthorized, "You are not authorized to use that API!");
             return response;
         }
     }
